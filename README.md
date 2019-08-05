@@ -17,7 +17,7 @@ at about line 672 - update download location for ptrace-kmod.c file. Ideally, yo
 
 ---
 
-**Onetwopunch.sh** (https://raw.githubusercontent.com/superkojiman/onetwopunch/master/onetwopunch.sh)
+**Onetwopunch.sh** (https://raw.githubusercontent.com/superkojiman/onetwopunch/master/onetwopunch.sh) Wrapper for unicornscan (fast port scan) and nmap (vuln script scan)
 1. ping sweep for online hosts into list
 `nmap -v -sn 10.11.1-254 -oG all-hosts.txt`
 `grep Up all-hosts.txt > online.hosts.txt`
