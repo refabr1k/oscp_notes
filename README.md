@@ -1,6 +1,6 @@
 # pentest
  
-**OpenfuckV2.c - mod_ssl 2.8.7 OpenSSL exploit** (https://www.exploit-db.com/exploits/764)
+**mod_ssl 2.8.7 open ssl exploit (openfuckv2)** (https://www.exploit-db.com/exploits/764)
 
 1. Change location for **ptrace-kmod.c**
 at about line 672 - update download location for ptrace-kmod.c file. Ideally, you can host this file on your webserver (eg. attacking machine SimpleHTTPServer) so that when you execute the exploit it will retrieve this dependency to run successfully.
