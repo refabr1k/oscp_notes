@@ -1,12 +1,10 @@
 # cheatsheets and exploit code and scripts / OSCP
  
 
-
-
 **python ms08-067 remote exploit** (https://www.exploit-db.com/exploits/40279)
 edit `shellcode` variable with payload and adjusts NOPS to fit it
 
- **ptrace-kmod Linux privilege escalation** Works for 2.2.x and 2.4.x kernels. (https://www.exploit-db.com/exploits/3) 
+**ptrace-kmod Linux privilege escalation** Works for 2.2.x and 2.4.x kernels. (https://www.exploit-db.com/exploits/3) 
 ```c
 // #include <linux/user.h>
 #include <sys/user.h>
@@ -16,7 +14,7 @@ edit `shellcode` variable with payload and adjusts NOPS to fit it
 ---
 
 **mod_ssl 2.8.7 open ssl exploit (openfuckv2)** (https://www.exploit-db.com/exploits/764)
-(commented out #COMMAND2 to download, compile and execute privilege escalation using ptrace-kmod.c)
+commented out #COMMAND2 to download, compile and execute privilege escalation using ptrace-kmod.c
 
 1. compile code
 `gcc -o openfuck openfuckV2.c -lcrypto`
@@ -28,7 +26,9 @@ _if you encounter missing ld error while compiling at victim machine, try checki
 
 ---
 
-**Onetwopunch.sh** (https://raw.githubusercontent.com/superkojiman/onetwopunch/master/onetwopunch.sh) Wrapper for unicornscan (fast port scan) and nmap (vuln script scan)
+**Onetwopunch.sh** (https://raw.githubusercontent.com/superkojiman/onetwopunch/master/onetwopunch.sh) 
+Wrapper for unicornscan (fast port scan) and nmap (vuln script scan)
+
 1. ping sweep for online hosts into list
 `nmap -v -sn 10.11.1-254 -oG all-hosts.txt`
 `grep Up all-hosts.txt > online.hosts.txt`
