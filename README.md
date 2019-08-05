@@ -2,7 +2,10 @@
  
 
 **python ms08-067 remote exploit** (https://www.exploit-db.com/exploits/40279)
+
 edit `shellcode` variable with payload and adjusts NOPS to fit it
+
+---
 
 **ptrace-kmod Linux privilege escalation** Works for 2.2.x and 2.4.x kernels. (https://www.exploit-db.com/exploits/3) 
 ```c
