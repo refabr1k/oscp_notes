@@ -29,6 +29,18 @@ _if you encounter missing ld error while compiling at victim machine, try checki
 
 ---
 
+**php reverse shell** (http://pentestmonkey.net/tools/web-shells/php-reverse-shell)
+Works like a charm in linux php LFI situations better than `system('<reverse shell bash code>');`
+
+1. modify code
+```
+$ip = '127.0.0.1';  // CHANGE THIS
+$port = 1234;       // CHANGE THIS
+```
+2. start listener to catch reverse shell
+3. upload and run script
+--- 
+
 **Onetwopunch.sh** (https://raw.githubusercontent.com/superkojiman/onetwopunch/master/onetwopunch.sh) 
 Wrapper for unicornscan (fast port scan) and nmap (vuln script scan)
 
