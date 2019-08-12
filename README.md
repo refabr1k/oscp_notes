@@ -4,12 +4,16 @@
 ### Windows Exploits
 <details><summary>MS08-067 Python Remote Exploit</summary>
 <p>
+
 (https://www.exploit-db.com/exploits/40279)
 edit `shellcode` variable with payload and adjusts NOPS to fit it
+
 </p>
 </details>
+
 <details><summary>HttpFileServer 2.3.x RCE</summary>
 <p>
+
 Upload nc.exe into victim machine and performs a reverse shell using nc.exe
 ```python
 	#change these to your webserver for uploading nc.exe
@@ -24,6 +28,7 @@ Upload nc.exe into victim machine and performs a reverse shell using nc.exe
 ### Linux Exploits
 <details><summary>Linux Kernel 2.2-4 PrivEsc (ptrace-kmod)</summary>
 <p>
+
 (https://www.exploit-db.com/exploits/3)
 Works for 2.2.x and 2.4.x kernels.
 ```c
@@ -37,6 +42,7 @@ Works for 2.2.x and 2.4.x kernels.
 
 <details><summary>Mod SSL 2.8.7 OpenSSL Exploit (openfartV2.c)</summary>
 <p>
+
 (https://www.exploit-db.com/exploits/764)
 commented out `#COMMAND2` variable out to download. Can be used seperately with ptrace-kmod for PrivEsc.
 Usage:
@@ -53,6 +59,7 @@ _if you encounter missing ld error while compiling at victim machine, try checki
 ### Other Exploits
 <details><summary>PHP Reverse Shell (pentest monkey)</summary>
 <p>
+
 (http://pentestmonkey.net/tools/web-shells/php-reverse-shell)
 Works like a charm in linux php LFI situations better than `system('<reverse shell bash code>');`
 1. modify code
@@ -69,6 +76,7 @@ $port = 1234;       // CHANGE THIS
 ### Tools
 <details><summary>Onetwopunch - wrapper for unicorn and nmap scan</summary>
 <p>
+
 (https://raw.githubusercontent.com/superkojiman/onetwopunch/master/onetwopunch.sh) 
 Scan for port using nicornscan (very fast) and chain it with nmap vuln nse script scan
 1. ping sweep for online hosts into list
@@ -93,6 +101,7 @@ Scan for port using nicornscan (very fast) and chain it with nmap vuln nse scrip
 
 <details><summary>Droopescan - drupal scanner</summary>
 <p>
+	
 (https://github.com/droope/droopescan)
 ```
 git clone https://github.com/droope/droopescan.git
