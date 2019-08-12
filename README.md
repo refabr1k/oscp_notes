@@ -2,7 +2,7 @@
  
 
 ### Windows Exploits
-<details><summary>**MS08-067 Python Remote Exploit**</summary>
+<details><summary>MS08-067 Python Remote Exploit</summary>
 <p>
 (https://www.exploit-db.com/exploits/40279)
 edit `shellcode` variable with payload and adjusts NOPS to fit it
