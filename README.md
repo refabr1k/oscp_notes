@@ -112,7 +112,7 @@ droopescan scan drupal -u http://10.11.1.49
 ```
 </p>
 
-<details><summary>Samba Checker</summary>
+<details><summary>Samba Checker - checks for samba version</summary>
 <p>
 
 Checks Samba version as enum4linux f\*cked up.
