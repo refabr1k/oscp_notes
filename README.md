@@ -111,6 +111,7 @@ pip install -r requirements.txt
 droopescan scan drupal -u http://10.11.1.49
 ```
 </p>
+</details>
 
 <details><summary>Samba Checker - checks for samba version</summary>
 <p>
