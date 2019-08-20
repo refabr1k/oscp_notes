@@ -116,7 +116,7 @@ droopescan scan drupal -u http://10.11.1.49
 <details><summary>Samba Checker - checks for samba version</summary>
 <p>
 
-Checks Samba version as enum4linux f\*cked up.
+Checks Samba version as enum4linux messed up?
 THanks fellow student OS-40285/rewardone
 ```bash
 ./samba_checker.sh <ipaddress> <port>
