@@ -1,20 +1,20 @@
 # Exploits/Tools/Cheatsheets
- 
+
 | **Exploits** | **OS** | **Link** |
 | - | - | - |
-| CVE-2017-7269 | Windows | [here](../master/IIS6%20CVE-2017-7269/README.md) |
-| Kernel 2.2.4 PrivEsc (ptrace kmod) | Linux | [here](../master/Kernel_2_2_4_PrivEsc%20(ptrace_kmod)/README.md) |
-| Kernel 2.6.37 full nelson | Linux | [here](../master/Kernel_2_6_37_fullnelson/README.md) |
-| MS08-067 Python Reverse Shell | Windows | [here](../master/MS08-067%20Python%20Reverse%20Shell/README.md) |
-| MS10-015 KiTrap0D | Windows | [here](../master/MS10-015%20KiTrap0D/README.md) |
-| MS11-046 afd privesc | Windows | [here](../master/MS11-046%20afd%20privesc/README.md) |
-| MS13-053 NTUserMessageCall | Windows | [here](../master/MS13-053%20NTUserMessageCall/README.md) |
-| MS14-058 HttpFileServer 2.3 RCE (CVE-2014-6287) | Windows | [here](../master/MS14-058%20HttpFileServer%202.3%20RCE%20(CVE-2014-6287)/README.md) |
-| MS15-051 ClientCopyImage | Windows | [here](../master/MS15-051%20ClientCopyImage/README.md) |
-| MS16-032 drivers eop | Windows | [here](../master/MS16-032%20drivers%20eop/README.md) |
-| MS16-135 win23k | Windows | [here](../master/MS16-135%20win23k/README.md) |
-| MS17-010 eternalblue | Windows | [here](../master/MS17-010%20eternalblue/README.md) |
-| Mod SSL 2.8.7 OpenSSL Exploit (openfuckV2.c) | Linux | [here](../master/Mod%20SSL%202.8.7%20OpenSSL%20Exploit%20(openfuckV2.c)/README.md) |
+| CVE-2017-7269 | Windows | [here](../master/IIS6%20CVE-2017-7269) |
+| Kernel 2.2.4 PrivEsc (ptrace kmod) | Linux | [here](../master/Kernel_2_2_4_PrivEsc%20(ptrace_kmod)) |
+| Kernel 2.6.37 full nelson | Linux | [here](../master/Kernel_2_6_37_fullnelson) |
+| MS08-067 Python Reverse Shell | Windows | [here](../master/MS08-067%20Python%20Reverse%20Shell) |
+| MS10-015 KiTrap0D | Windows | [here](../master/MS10-015%20KiTrap0D) |
+| MS11-046 afd privesc | Windows | [here](../master/MS11-046%20afd%20privesc) |
+| MS13-053 NTUserMessageCall | Windows | [here](../master/MS13-053%20NTUserMessageCall) |
+| MS14-058 HttpFileServer 2.3 RCE (CVE-2014-6287) | Windows | [here](../master/MS14-058%20HttpFileServer%202.3%20RCE%20(CVE-2014-6287)) |
+| MS15-051 ClientCopyImage | Windows | [here](../master/MS15-051%20ClientCopyImage) |
+| MS16-032 drivers eop | Windows | [here](../master/MS16-032%20drivers%20eop) |
+| MS16-135 win23k | Windows | [here](../master/MS16-135%20win23k) |
+| MS17-010 eternalblue | Windows | [here](../master/MS17-010%20eternalblue) |
+| Mod SSL 2.8.7 OpenSSL Exploit (openfuckV2.c) | Linux | [here](../master/Mod%20SSL%202.8.7%20OpenSSL%20Exploit%20(openfuckV2.c)) |
 
 ### Tools
 <details><summary>Onetwopunch - wrapper for unicorn and nmap scan</summary>
